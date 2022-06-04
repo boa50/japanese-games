@@ -30,9 +30,6 @@ for (let i = 0; i < gridSize*gridSize; i++) {
     labels.push(makeid(5))
 }
 
-const dot = document.createElement('span')
-dot.className = 'dot'
-
 const board = document.getElementById('board')
 const boardTable = document.createElement('table')
 const boardTableBody = document.createElement('tbody')
@@ -46,7 +43,14 @@ for (let i = 0; i < gridSize; i++) {
         if (!isBoardCenter(gridSize, i, j)) {
             boardTableCell.innerText = getRandomLabel(labels)
         } else {
-            // TODO inserir os pontos default
+            const dot = document.createElement('span')
+            dot.className = 'dot'
+            if (i === j) {
+                dot.className += ' white-dot'
+            } else {
+                dot.className += ' black-dot'
+            }
+            boardTableCell.append(dot)
         }
 
         boardTableRow.append(boardTableCell)
