@@ -1,7 +1,5 @@
-const gridSize = 6
-
-
 const montarTabela = () => {
+    const gridSize = getGridSize()
     const labels = getLabels(gridSize)
 
     const board = document.getElementById('board')

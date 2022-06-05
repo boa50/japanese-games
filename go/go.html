@@ -4,21 +4,25 @@
         <link rel="stylesheet" type="text/css" href="go.css"/>
     </head>
     <body>
+        <h1>漢字囲碁！</h1>
         <div id="board"></div>
         <div class="configs">
-            <span id="black-select" class="selectable selected">Preto:</span>
+            <span id="black-select" class="selectable selected">黒：</span>
             <span id="black-points">2</span>
-            <span>pontos</span>
+            <span>点</span>
             <br><br>
-            <span id="white-select" class="selectable">Branco:</span>
+            <span id="white-select" class="selectable">白：</span>
             <span id="white-points">2</span>
-            <span>pontos</span>
+            <span>点</span>
             <br><br>
 
-            <label for="kanjis">Kanjis</label><br>
+            <label for="grid-size">ボードサイズ （２の倍数）</label><br>
+            <input id="grid-size" type="number"></input>
+            <br>
+            <label for="kanjis">漢字</label><br>
             <textarea id="kanjis" rows="7" cols="50"></textarea>
             <br><br>
-            <input type="button" id="btn-misturar" value="Recomeçar Jogo" >
+            <input type="button" id="btn-misturar" value="リスタート" >
         </div>
         <script src="board.js"></script>
         <script src="labels.js"></script>

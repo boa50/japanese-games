@@ -40,6 +40,6 @@ td {
 .configs {
     position: absolute;
     left: 50%;
-    top: 0;
+    top: 50px;
     margin: 30px;
 }

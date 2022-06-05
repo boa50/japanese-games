@@ -59,3 +59,14 @@ const manageCell = (element) => {
 
     countDots()
 }
+
+const getGridSize = () => {
+    const defaultGridSize = 6
+    const gridSizeInput = document.getElementById('grid-size')
+
+    if (gridSizeInput.value === '') {
+        gridSizeInput.value = defaultGridSize
+    }
+
+    return gridSizeInput.value
+}
