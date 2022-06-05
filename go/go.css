@@ -13,9 +13,11 @@ table td {
 td {
     height: 70px;
     width: 70px;
+    max-width: 70px;
     text-align: center;
     vertical-align: middle;
     cursor: pointer;
+    overflow-wrap: break-word;
 }
 .dot {
     height: 50px;

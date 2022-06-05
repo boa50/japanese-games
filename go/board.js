@@ -28,6 +28,14 @@ const changeDotColor = (element) => {
     }
 }
 
+const countDots = () => {
+    const blackPoints = document.getElementById('black-points')
+    const whitePoints = document.getElementById('white-points')
+
+    blackPoints.innerText = document.getElementsByClassName('black-dot').length
+    whitePoints.innerText = document.getElementsByClassName('white-dot').length
+}
+
 const manageCell = (element) => {
     if (element.innerText !== '') {
         element.innerText = ''
@@ -35,4 +43,6 @@ const manageCell = (element) => {
     } else {
         changeDotColor(element)
     }
+
+    countDots()
 }
