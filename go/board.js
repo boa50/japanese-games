@@ -36,10 +36,23 @@ const countDots = () => {
     whitePoints.innerText = document.getElementsByClassName('white-dot').length
 }
 
+let selectedColor = 'black'
+const selectColor = (color) => {
+    selectedColor = color
+
+    if (color === 'white') {
+        document.getElementById('white-select').classList.add('selected')
+        document.getElementById('black-select').classList.remove('selected')
+    } else {
+        document.getElementById('black-select').classList.add('selected')
+        document.getElementById('white-select').classList.remove('selected')
+    }
+}
+
 const manageCell = (element) => {
     if (element.innerText !== '') {
         element.innerText = ''
-        element.append(makeDot('white'))
+        element.append(makeDot(selectedColor))
     } else {
         changeDotColor(element)
     }

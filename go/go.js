@@ -32,11 +32,13 @@ const montarTabela = () => {
         boardTableBody.append(boardTableRow)
     }
     
-    
     boardTable.append(boardTableBody)
     board.append(boardTable)
+    countDots()
 }
 
 montarTabela()
 
 document.getElementById('btn-misturar').onclick = montarTabela
+document.getElementById('black-select').onclick = () => {selectColor('black')}
+document.getElementById('white-select').onclick = () => {selectColor('white')}

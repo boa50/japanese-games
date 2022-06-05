@@ -31,3 +31,15 @@ td {
 .black-dot {
     background-color: #000000;
 }
+.selectable {
+    cursor: pointer;
+}
+.selected {
+    background-color: darkorange;
+}
+.configs {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    margin: 30px;
+}
