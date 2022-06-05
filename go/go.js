@@ -1,15 +1,3 @@
-// Apenas para teste
-function makeid(length) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-      result += characters.charAt(Math.floor(Math.random() * 
- charactersLength));
-   }
-   return result;
-}
-
 const getRandomLabel = (list) => {
     const idx = Math.floor(Math.random() * list.length)
     const label = list[idx]
@@ -18,17 +6,27 @@ const getRandomLabel = (list) => {
     return label;
 }
 
-const isBoardCenter = (gridSize, rowIdx, colIdx) => {
-    const centers = [gridSize/2 - 1, gridSize/2]
-    return centers.includes(rowIdx) && centers.includes(colIdx)
-}
-
 const gridSize = 6
+let kanjis = `一人 二人 三日 四日 五日 六日 七日 八日 九日 十日 百万 千万 万年筆 円 明日 毎週 月曜日 今年 去年
+時計 時間 十分 自分  午前　名前 午後 今晩 先週 今朝 先生 来る 来月 半分 毎日 曜日 人々 男の子 女の子 子供  母  父
+友達  火曜日 水曜日 木曜日 土曜日 金曜日 日本語 川 花火 元気 生徒 魚 天気 空 山 雨 電気 電車 英語 耳 手紙 足 目
+出口  名前 `
+kanjis = kanjis.trim().split(/\s+/)
 const labels = []
 
-for (let i = 0; i < gridSize*gridSize; i++) {
-    labels.push(makeid(5))
+for (let i = 0; i < gridSize; i++) {
+    labels.push([])
+    for (let j = 0; j < gridSize; j++) {
+        if (!isBoardCenter(gridSize, i, j)) {
+            const kanji = getRandomLabel(kanjis)
+            labels[i].push(kanji)
+        } else {
+            labels[i].push('')
+        }
+    }
 }
+
+console.log(labels)
 
 const board = document.getElementById('board')
 const boardTable = document.createElement('table')
@@ -41,18 +39,16 @@ for (let i = 0; i < gridSize; i++) {
         const boardTableCell = document.createElement('td')
 
         if (!isBoardCenter(gridSize, i, j)) {
-            boardTableCell.innerText = getRandomLabel(labels)
+            boardTableCell.innerText = labels[i][j]
         } else {
-            const dot = document.createElement('span')
-            dot.className = 'dot'
             if (i === j) {
-                dot.className += ' white-dot'
+                boardTableCell.append(makeDot('white'))
             } else {
-                dot.className += ' black-dot'
+                boardTableCell.append(makeDot('black'))
             }
-            boardTableCell.append(dot)
         }
-
+        
+        boardTableCell.onclick = () => {manageCell(boardTableCell)}
         boardTableRow.append(boardTableCell)
     }
 

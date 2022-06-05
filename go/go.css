@@ -8,12 +8,14 @@ table {
 table,
 table td {
   border: 1px solid #424242;
+  border-spacing: 0;
 }
 td {
     height: 70px;
     width: 70px;
     text-align: center;
     vertical-align: middle;
+    cursor: pointer;
 }
 .dot {
     height: 50px;
